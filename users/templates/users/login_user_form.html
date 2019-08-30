@@ -1,0 +1,21 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+    <div>
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_email">Email</label>
+        <input type="text" name="email" id="grid_email" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3">
+    </div>
+
+    <div>
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_password">Password</label>
+        <input type="password" name="password" id="grid_password" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4">
+    </div>
+
+    <button><input type="submit" value="Login"></button>
+
+    <div>
+        <a href="{% url 'users:register' %}">Create a new account.</a>
+    </div>
+</form>
+{% endblock %}

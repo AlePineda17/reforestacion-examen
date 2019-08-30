@@ -1,0 +1,28 @@
+{% extends 'fincas/base.html' %}
+
+{% block content %}
+<a href="{% url 'fincas:create_tree' user.id property.id plot.id %}" class="text-blue-600">Add Tree</a>
+
+{% if trees %}
+
+    {% for tree in trees %}
+        <p><strong>Tree information:</strong></p>
+        <p>Diameter: {{ tree.diameter }}</p>
+        <p>Height: {{ tree.height }}</p>
+        <p>Health: {{ tree.health }}</p>
+        <p>Year: {{ tree.year }}</p>
+
+        {% if user.is_admin == True %}
+            <div>
+                <a href="{% url 'fincas:edit_tree' user.id property.id tree.id %}" class="text-blue-600">Edit Tree | </a>
+                <a href="{% url 'fincas:delete_tree' user.id property.id plot.id %}" class="text-blue-600">Delete Tree</a>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+{% else %}
+    <p>Nothing to show.</p>
+{% endif %}
+
+<a href="{% url 'fincas:property_plots' user.id property.id %}">Go back to Property info</a>
+{% endblock %}

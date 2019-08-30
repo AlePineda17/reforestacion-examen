@@ -1,0 +1,24 @@
+{% extends 'fincas/base.html' %}
+
+{% block content %}
+<form action="{% url 'fincas:edit_plot' user.id plot.id %}" method="post">{% csrf_token %}
+    <div>
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_name">Name</label>
+        <input type="text" name="name" value="{{ plot.name }}" id="grid_name" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3">
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_latitude">Latitude</label>
+            <input type="text" name="latitude" value="{{ plot.latitude }}" id="grid_latitude" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3">
+        </div>
+
+        <div class="md:w-1/2 px-3">
+            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_longitude">Longitude</label>
+            <input type="text" name="longitude" value="{{ plot.longitude }}" id="grid_longitude" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4">
+        </div>
+    </div>
+
+    <button><input type="submit" value="Add"></button>
+</form>
+{% endblock %}

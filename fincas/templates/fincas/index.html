@@ -1,0 +1,28 @@
+{% extends 'fincas/base.html' %}
+
+{% block content %}
+<h1>Welcome</h1>
+{% if user.is_admin == True %}
+    <a href="{% url 'fincas:create_property' user.id %}" class="text-blue-600">Add a Property</a>
+{% endif %}
+
+{% if index %}
+    {% for property in index %}
+        <div>
+            <p class="text-black text-xl">{{ property.name }}</p>
+            <p class="text-gray-800 text-sm">{{ property.country }}, {{ property.department }}</p>
+            <a href="{% url 'fincas:property_plots' user.id property.id %}" class="text-blue-600">Show Details</a>
+
+            {% if user.is_admin == True %}
+                <div>
+                    <a href="{% url 'fincas:edit_property' user.id %}" class="text-blue-600">Edit Property</a>
+                    <a href="{% url 'fincas:delete_property' user.id %}" class="text-blue-600">Delete Property</a>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No properties added yet.</p>
+{% endif %}
+
+{% endblock %}

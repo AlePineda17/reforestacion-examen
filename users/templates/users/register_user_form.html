@@ -1,0 +1,43 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+    <div class="-mx-3 md:flex mb-2">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_first_name">First Name</label>
+            <input type="text" name="first_name" id="grid_first_name" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4">
+        </div>
+
+        <div class="md:w-1/2 px-3">
+            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_last_name">Last Name</label>
+            <input type="text" name="last_name" id="grid_last_name" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4">
+        </div>
+
+        <div class="md:w-1/2 px-3">
+            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_phone_number">Phone Number</label>
+            <input type="text" name="phone_number" id="grid_phone_number" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4">
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_email">Email</label>
+            <input type="text" name="email" id="grid_email" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3">
+        </div>
+
+        <div class="md:w-1/2 px-3">
+            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_password">Password</label>
+            <input type="password" name="password" id="grid_password" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4">
+        </div>
+    </div>
+
+    <div>
+        <label>I'm an administrator of this site</label>
+        <input type="checkbox" value="True" name="is_admin">
+    </div>
+
+    <button>
+        <input type="submit" value="Register">
+    </button>
+</form>
+{% endblock %}

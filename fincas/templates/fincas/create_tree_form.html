@@ -1,0 +1,29 @@
+{% extends 'fincas/base.html' %}
+
+{% block content %}
+<form action="{% url 'fincas:create_tree' user.id plot.id %}" method="post">{% csrf_token %}
+    <input name="plot_id" value="{{plot.id}}" hidden>
+
+    <div>
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_diameter">Diameter</label>
+        <input type="text" name="diameter" id="grid_diameter" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3">
+    </div>
+
+    <div>
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_height">Height</label>
+        <input type="text" name="height" id="grid_height" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3">
+    </div>
+
+    <div>
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_health">Health</label>
+        <input type="text" name="health" id="grid_health" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3">
+    </div>
+
+    <div>
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid_year">Year</label>
+        <input type="text" name="year" id="grid_year" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3">
+    </div>
+
+    <input type="submit" value="Add">
+</form>
+{% endblock %}
